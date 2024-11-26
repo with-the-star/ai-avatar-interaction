@@ -19,10 +19,10 @@ const Quiz: React.FC = () => {
 
   const handleOptionChange = (index: number) => {
     setSelectedOption(index);
-    setSuccess("");
-    setWarning("");
+    // setSuccess("");
+    // setWarning("");
     setShowNext(false);
-    setResources([]);
+    // setResources([]);
   };
 
   const handleSubmit = () => {
@@ -34,10 +34,12 @@ const Quiz: React.FC = () => {
     const currentQuestion = questions[currentQuestionIndex];
 
     if (currentQuestion.options[selectedOption] === currentQuestion.answer) {
+      setWarning("");
       setSuccess("Great job! Let's move on to the next topic.");
       setShowNext(true);
       setResources([]);
     } else {
+      setSuccess("");
       setWarning("Incorrect answer, please try again!");
       setResources(currentQuestion.resources || []);
       setShowNext(false);
@@ -104,9 +106,9 @@ const Quiz: React.FC = () => {
               <h3 className="text-xl font-semibold">Supplemental Resources:</h3>
               <ul className="flex flex-col gap-3 mt-2">
                 {resources.map((resource, index) => (
-                  <li key={index}>
+                  <li key={index} className="overflow-hidden">
                     <a
-                      className="underline underline-offset-1 text-blue-400"
+                      className="underline underline-offset-1 text-blue-400 break-words"
                       href={resource}
                       target="_blank"
                       rel="noopener noreferrer"
