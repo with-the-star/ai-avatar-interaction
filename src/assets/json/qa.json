@@ -1,20 +1,20 @@
 {
   "data": [
     {
-      "q": "how to make AI avatar?",
-      "a": "you can use AI api."
+      "question": "how to make AI avatar?",
+      "answer": "you can use AI api."
     },
     {
-      "q": "what is image type?",
-      "a": "upper-body, female mage, portrait with magical focus "
+      "question": "what is image type?",
+      "answer": "upper-body, female mage, portrait with magical focus "
     },
     {
-      "q": "what is background?",
-      "a": "Diffuse light gradient in pale blue tones"
+      "question": "what is background?",
+      "answer": "Diffuse light gradient in pale blue tones"
     },
     {
-      "q": "what are keywords?",
-      "a": "Ethereal, high-fantasy realism, intricate design, glowing magic"
+      "question": "what are keywords?",
+      "answer": "Ethereal, high-fantasy realism, intricate design, glowing magic"
     }
   ]
 }

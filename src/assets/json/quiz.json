@@ -1,20 +1,20 @@
 {
   "data": [
     {
-      "q": "how to make AI avatar?",
-      "a": ["test", "asd", "fdas", "da", "you can use AI api"],
-      "c": "you can use AI api",
+      "question": "how to make AI avatar?",
+      "options": ["you can paint", "you can use AI api"],
+      "answer": "you can use AI api",
       "resources": [
-        "https://www.khanacademy.org/math/arithmetic-home/addition-subtraction/adding-and-subtracting-whole-numbers/a/adding-2-digit-numbers"
+        "https://docs.google.com/document/d/1S5GuQLFtBKyd9wJy_zQYxbjPSn2oQet2K0vpVnvdZG8"
       ]
     },
     {
-      "q": "how to use AI avatar?",
-      "a": ["test", "asd", "fdas", "da", "you can use AI api"],
-      "c": "you can use AI api",
+      "question": "what is background?",
+      "options": ["yello", "pale blue", "red", "blue"],
+      "answer": "pale blue",
       "resources": [
-        "https://en.wikipedia.org/wiki/Paris",
-        "https://www.britannica.com/place/Paris"
+        "https://docs.google.com/document/d/1S5GuQLFtBKyd9wJy_zQYxbjPSn2oQet2K0vpVnvdZG8",
+        "https://docs.google.com/document/d/1S5GuQLFtBKyd9wJy_zQYxbjPSn2oQet2K0vpVnvdZG8"
       ]
     }
   ]
