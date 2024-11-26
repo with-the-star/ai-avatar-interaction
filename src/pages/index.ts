@@ -1,8 +1,7 @@
 import React from "react";
 
-const Avatar = React.lazy(() => import("./Avatar"));
-const Quiz = React.lazy(() => import("./Quiz"));
+const Interaction = React.lazy(() => import("./Interaction"));
 
-const Page = { Avatar, Quiz };
+const Page = { Interaction };
 
 export default Page;

@@ -5,7 +5,7 @@ interface Question {
     q: string;
     a: string[];
     c: string;
-    resources?: string[]; // Optional resources for re-learning
+    resources?: string[];
 }
 
 const Quiz: React.FC = () => {
@@ -13,14 +13,14 @@ const Quiz: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<number | null>(null);
     const [warning, setWarning] = useState('');
     const [showNext, setShowNext] = useState(false);
-    const [resources, setResources] = useState<string[]>([]); // State to hold resources
+    const [resources, setResources] = useState<string[]>([]);
     const questions: Question[] = quizData.data;
 
     const handleOptionChange = (index: number) => {
         setSelectedOption(index);
         setWarning('');
         setShowNext(false);
-        setResources([]); // Clear resources when changing answer
+        setResources([]);
     };
 
     const handleSubmit = () => {
