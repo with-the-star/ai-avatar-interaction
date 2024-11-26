@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import logo from "../assets/images/rabbit.jpg";
-import { Link } from "react-router-dom";
 
 const data = require("../assets/json/qa.json");
 
@@ -9,11 +7,7 @@ interface QA {
   a: string;
 }
 
-const Avatar: React.FC = () => {
-  const title = "Winter Scene with Anthropomorphic Rabbit";
-  const description =
-    "The image depicts an anthropomorphic rabbit character dressed in a stylish blue coat, scarf, and sneakers, sitting on a snowy log in a winter landscape. In the background, there is a cozy-looking cabin with lights shining through the windows, and a barbecue grill can be seen. The setting evokes a sense of warmth and comfort despite the snowy surroundings, with the rabbit character appearing to be enjoying a relaxing moment outdoors.";
-
+const Learning: React.FC = () => {
   const [userInput, setUserInput] = useState<string>("");
   const [response, setResponse] = useState<string>("");
   const [history, setHistory] = useState<
@@ -47,10 +41,6 @@ const Avatar: React.FC = () => {
   };
   return (
     <div>
-      <h2>AI Avatar Interaction</h2>
-      <img src={logo} style={{ width: "300px" }} alt="logo" />
-      <p>{title}</p>
-      <p>{description}</p>
       <input
         type="text"
         value={userInput}
@@ -68,11 +58,8 @@ const Avatar: React.FC = () => {
           </li>
         ))}
       </ul>
-      <Link to="/quiz">
-        <button>Quiz</button>
-      </Link>
     </div>
   );
 };
 
-export default Avatar;
+export default Learning;
