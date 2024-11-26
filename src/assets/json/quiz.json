@@ -1,0 +1,21 @@
+{
+  "data": [
+    {
+      "q": "how to make AI avatar?",
+      "a": ["test", "asd", "fdas", "da", "you can use AI api"],
+      "c": "you can use AI api",
+      "resources": [
+        "https://www.khanacademy.org/math/arithmetic-home/addition-subtraction/adding-and-subtracting-whole-numbers/a/adding-2-digit-numbers"
+      ]
+    },
+    {
+      "q": "how to use AI avatar?",
+      "a": ["test", "asd", "fdas", "da", "you can use AI api"],
+      "c": "you can use AI api",
+      "resources": [
+        "https://en.wikipedia.org/wiki/Paris",
+        "https://www.britannica.com/place/Paris"
+      ]
+    }
+  ]
+}

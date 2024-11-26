@@ -1,24 +1,22 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import Page from "./pages";
+// import Layout from "./layout";
 
-import Layout from "layout";
-import Page from "pages";
-import GlobalStyles from "utils/global";
-import theme from "utils/theme";
+import logo from "./logo.svg";
+import "./App.css";
 
-const App = () => {
+function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
+    <div style={{ padding: "40px" }}>
       <Router>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Page.Home />} />
-          </Route>
+          <Route path="/" element={<Page.Avatar />}></Route>
+          <Route path="/quiz" element={<Page.Quiz />}></Route>
         </Routes>
       </Router>
-    </ThemeProvider>
+    </div>
   );
-};
+}
 
 export default App;
