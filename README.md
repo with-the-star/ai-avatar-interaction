@@ -13,7 +13,8 @@ You will also see any lint errors in the console.
 ### How to
 
 In the Learning tab, only the questions below are available because project is not yet connected to AI. \
+
 how to make AI avatar? \
 what is image type? \
 what is background? \
-what are keywords? \
+what are keywords? 
