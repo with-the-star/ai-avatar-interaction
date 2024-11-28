@@ -1,40 +1,27 @@
-"use client";
+'use client'
 
-import { useCallback, useState } from "react";
-import { CornerDownLeft, LoaderCircle } from "lucide-react";
-import Textarea from "react-textarea-autosize";
-import { useEnterSubmit } from "@/lib/hooks/use-enter-submit";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { useCallback, useState } from 'react'
+import { CornerDownLeft, LoaderCircle } from 'lucide-react'
+import Textarea from 'react-textarea-autosize'
+import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
-export function ChatPrompt({
-  isLoading,
-  onSubmit,
-}: {
-  isLoading: boolean;
-  onSubmit: (input: string) => void;
-}) {
-  const [input, setInput] = useState("");
-  const { formRef, onKeyDown } = useEnterSubmit(isLoading);
+export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubmit: (input: string) => void }) {
+  const [input, setInput] = useState('')
+  const { formRef, onKeyDown } = useEnterSubmit(isLoading)
 
-  const handleInputChange = useCallback(
-    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setInput(e.target.value);
-    },
-    []
-  );
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInput(e.target.value)
+  }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input?.trim()) return;
+    e.preventDefault()
+    if (!input?.trim()) return
 
-    onSubmit(input);
-    setInput("");
-  };
+    onSubmit(input)
+    setInput('')
+  }
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
@@ -56,17 +43,8 @@ export function ChatPrompt({
         <div className="absolute right-4 top-3">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button
-                type="submit"
-                size="icon"
-                className="size-8 rounded-lg"
-                disabled={isLoading || input?.trim() === ""}
-              >
-                {isLoading ? (
-                  <LoaderCircle className="size-6 animate-spin" />
-                ) : (
-                  <CornerDownLeft className="size-4 " />
-                )}
+              <Button type="submit" size="icon" className="size-8 rounded-lg" disabled={isLoading || input?.trim() === ''}>
+                {isLoading ? <LoaderCircle className="size-6 animate-spin" /> : <CornerDownLeft className="size-4 " />}
                 <span className="sr-only">Send message</span>
               </Button>
             </TooltipTrigger>
@@ -75,5 +53,5 @@ export function ChatPrompt({
         </div>
       </div>
     </form>
-  );
+  )
 }

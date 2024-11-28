@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { Message } from '@/lib/types'
-import { cn } from "@/utils/cn";
+import { cn } from '@/lib/utils'
 import { IconOpenAI, IconUser } from '@/components/ui/icons'
 import { MemoizedReactMarkdown } from '@/components/markdown'
 

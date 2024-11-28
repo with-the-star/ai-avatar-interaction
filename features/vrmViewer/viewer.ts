@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { Model } from "./model";
 import { loadVRMAnimation } from "@/lib/VRMAnimation/loadVRMAnimation";
-import { buildUrl } from "@/utils/buildUrl";
+import { buildUrl } from "@/lib/utils";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 /**
@@ -50,7 +50,7 @@ export class Viewer {
       if (!this.model?.vrm) return;
 
       // Disable frustum culling
-      this.model.vrm.scene.traverse((obj) => {
+      this.model.vrm.scene.traverse((obj: THREE.Object3D) => {
         obj.frustumCulled = false;
       });
 
