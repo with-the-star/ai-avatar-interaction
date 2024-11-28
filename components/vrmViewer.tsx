@@ -1,7 +1,7 @@
 "use client"
 import { useContext, useCallback } from "react";
 import { ViewerContext } from "../features/vrmViewer/viewerContext";
-import { buildUrl } from "@/utils/buildUrl";
+import { buildUrl } from "@/lib/utils";
 
 export default function VrmViewer() {
   const { viewer } = useContext(ViewerContext);
