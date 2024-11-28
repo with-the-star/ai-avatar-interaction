@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useState } from 'react'
-import { CornerDownLeft, LoaderCircle } from 'lucide-react'
+import { CornerDownLeft, LoaderCircle, Paperclip } from 'lucide-react'
 import Textarea from 'react-textarea-autosize'
 import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { Button } from '@/components/ui/button'
@@ -24,13 +24,19 @@ export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubm
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit}>
-      <div className="relative flex max-h-60 w-full grow flex-col overflow-hidden border sm:rounded-2xl">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-row">
+      <div className="relative flex max-h-[300px] w-full grow overflow-hidden items-center gap-1">
+        <div>
+          <Button type="submit" size="icon" className="size-10 rounded-xl bg-[#ff617f]">
+            <Paperclip className="size-4 " />
+            <span className="sr-only">Send message</span>
+          </Button>
+        </div>
         <Textarea
           tabIndex={0}
           onKeyDown={onKeyDown}
           placeholder="Send a message."
-          className="min-h-[54px] w-full resize-none bg-transparent p-4 pr-[40px] focus-within:outline-none"
+          className="min-h-[42px] max-h-[300px] w-full resize-none bg-white text-gray-800 px-4 py-2 focus-within:outline-none  sm:rounded-2xl shadow-2xl"
           autoFocus
           spellCheck={false}
           autoComplete="off"
@@ -40,10 +46,10 @@ export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubm
           value={input}
           onChange={handleInputChange}
         />
-        <div className="absolute right-4 top-3">
+        <div className="">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button type="submit" size="icon" className="size-8 rounded-lg" disabled={isLoading || input?.trim() === ''}>
+              <Button type="submit" size="icon" className="size-10 rounded-xl bg-[#ff617f]" disabled={isLoading || input?.trim() === ''}>
                 {isLoading ? <LoaderCircle className="size-6 animate-spin" /> : <CornerDownLeft className="size-4 " />}
                 <span className="sr-only">Send message</span>
               </Button>
