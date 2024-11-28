@@ -7,7 +7,7 @@ import { useEnterSubmit } from '@/lib/hooks/use-enter-submit'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
-export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubmit: (input: string) => void }) {
+export function ChatPrompt({ isLoading, onSubmit, handleQuiz }: { isLoading: boolean; onSubmit: (input: string) => void ;handleQuiz: () => void }) {
   const [input, setInput] = useState('')
   const { formRef, onKeyDown } = useEnterSubmit(isLoading)
 
@@ -51,6 +51,7 @@ export function ChatPrompt({ isLoading, onSubmit }: { isLoading: boolean; onSubm
             <TooltipContent>Send message</TooltipContent>
           </Tooltip>
         </div>
+      <button className='border border-white px-4 py-2' onClick={handleQuiz}>Quiz</button>
       </div>
     </form>
   )

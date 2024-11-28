@@ -9,11 +9,12 @@ import { ChatPrompt } from '@/components/chat-prompt'
 interface ChatProps {
   messages: Message[]
   handleSubmit: (input: string) => void
+  handleQuiz: () => void
   isLoading: boolean
   className?: string
 }
 
-export function Chat({ messages, handleSubmit, isLoading, className }: ChatProps) {
+export function Chat({ messages, handleSubmit, isLoading, className, handleQuiz }: ChatProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="w-full grow overflow-auto">
@@ -31,11 +32,8 @@ export function Chat({ messages, handleSubmit, isLoading, className }: ChatProps
         </div>
       </div>
       <div className="inset-x-0 bottom-0 w-full">
-        <div className="mx-auto max-w-3xl sm:px-4">
-          <ChatPrompt isLoading={isLoading} onSubmit={handleSubmit} />
-          <p className="hidden px-2 py-1 text-center text-xs leading-normal text-muted-foreground sm:block">
-            OpenAI&apos;s GPT can make mistakes. Consider checking important information.
-          </p>
+        <div className="mx-auto max-w-3xl sm:px-4 mb-5">
+          <ChatPrompt isLoading={isLoading} onSubmit={handleSubmit} handleQuiz={handleQuiz} />
         </div>
       </div>
     </div>

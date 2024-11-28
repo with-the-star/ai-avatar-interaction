@@ -1,6 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useReducer } from 'react'
+import { useRouter } from 'next/navigation'
 import { readStreamableValue } from 'ai/rsc'
 import { createMessage, listMessages, runThread } from '@/lib/actions'
 import { Message } from '@/lib/types'
@@ -36,6 +37,8 @@ function reducer(state: State, action: Action): State {
 }
 
 export default function Page({ params }: PageProps) {
+  const router = useRouter()
+
   const [state, dispatch] = useReducer(reducer, {
     messages: [],
     isLoading: false,
@@ -70,9 +73,41 @@ export default function Page({ params }: PageProps) {
     dispatch({ type: 'SET_LOADING', isLoading: false })
   }
 
+  async function handleQuiz() {
+    const quizRequestMessage: Message = {
+      content: "Please generate a quiz for me.",
+      role: 'user',
+    };
+
+    dispatch({ type: 'ADD_MESSAGE', message: quizRequestMessage });
+    dispatch({ type: 'SET_LOADING', isLoading: true });
+
+    await createMessage(params.threadId, quizRequestMessage);
+    const stream = await runThread(params.threadId, params.assistantId);
+
+    dispatch({ type: 'ADD_MESSAGE', message: { role: 'assistant', content: '_Generating quiz..._' } });
+    
+    let quizData = null;
+    for await (const v of readStreamableValue(stream)) {
+      if (v && v.text !== '') {
+        dispatch({ type: 'UPDATE_LAST_MESSAGE', content: v.text });
+        quizData = v.text; // Assuming the API returns quiz data in this format
+      }
+    }
+    
+    dispatch({ type: 'SET_LOADING', isLoading: false });
+
+    // Redirect to the quiz page with quiz data
+    if (quizData) {
+      console.log(quizData)
+      localStorage.setItem('quizData', JSON.stringify(quizData));
+       router.push('/quiz');
+    }
+  }
+
   return (
     <div className="relative flex h-[calc(100vh-theme(spacing.16))] overflow-hidden bg-background dark:bg-transparent">
-      <Chat messages={state.messages} handleSubmit={handleSubmit} isLoading={state.isLoading} />
+      <Chat messages={state.messages} handleSubmit={handleSubmit} isLoading={state.isLoading} handleQuiz={handleQuiz} />
     </div>
   )
 }
