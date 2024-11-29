@@ -56,7 +56,15 @@ export default function Dropzone({ onLoad }: DropzoneProps) {
       >
         <Upload className="mb-4 size-8 text-gray-500 dark:text-gray-400" />
         <h2 className="mt-1 font-medium tracking-wide">Click to upload or drag and drop</h2>
-        <input id="fileInput" placeholder="fileInput" className="hidden" type="file" multiple={true} onChange={handleFileLoad} />
+        <input
+          id="fileInput"
+          placeholder="fileInput"
+          className="hidden"
+          type="file"
+          multiple={true}
+          onChange={handleFileLoad}
+          accept=".doc, .docx, .pdf, .pptx"
+        />      
       </label>
     </div>
   )

@@ -69,7 +69,7 @@ export default function Page() {
               <h3 className='text-2xl font-semibold'>Welcome</h3>
               <p className="">Get started by uploading your documents here.</p>
               <Dropzone onLoad={handleFilesLoaded} />
-              <p>File Type : PDF, XLSX, TXT, WORD</p>
+              <p>File Type : .doc, .docx, .pdf, .pptx</p>
             </div>
           )
         ) : null}
