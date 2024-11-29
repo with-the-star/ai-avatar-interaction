@@ -32,7 +32,7 @@ export function Chat({ messages, handleSubmit, isLoading, className, handleQuiz 
         </div>
       </div>
       <div className="inset-x-0 bottom-0 w-full">
-        <div className="mx-auto max-w-3xl sm:px-4 mb-5">
+        <div className="mx-auto mb-5 max-w-3xl sm:px-4">
           <ChatPrompt isLoading={isLoading} onSubmit={handleSubmit} handleQuiz={handleQuiz} />
         </div>
       </div>

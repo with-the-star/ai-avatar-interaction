@@ -50,22 +50,22 @@ export default function Page() {
 
   return (
     <div className="flex items-center justify-center py-10">
-      <div className="absolute top-10 right-10">
+      <div className="absolute right-20 top-20">
         <button
           onClick={() => {
             setOpened(true)
           }}
-          className="px-5 py-2 border border-white"
+          className="border border-white px-5 py-2"
         >
           Start
         </button>
       </div>
-      <div className="text-gray-700 text-white bg-black bg-opacity-95 rounded-2xl">
+      <div className="rounded-2xl bg-black/95 text-white">
         {opened ? (
           isLoading ? (
             <LoaderCircle className="size-24 animate-spin" />
           ) : (
-            <div className="p-10 space-y-5">
+            <div className="space-y-5 p-10">
               <h3 className='text-2xl font-semibold'>Welcome</h3>
               <p className="">Get started by uploading your documents here.</p>
               <Dropzone onLoad={handleFilesLoaded} />

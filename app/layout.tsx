@@ -30,7 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <Providers>
           <div className="flex flex-col">
           <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between px-4">
-              <div className="flex items-center text-white font-bold text-2xl">AI Avatar Interaction</div>
+              <div className="text-2xl font-bold text-white">AI Avatar Interaction</div>
             </header>
             <main className="flex flex-1 flex-col">{children}</main>
           </div>

@@ -63,11 +63,11 @@ export default function QuizPage() {
   };
 
   return (
-    <div className='relative flex h-[calc(100vh-theme(spacing.16))] overflow-hidden items-center justify-center px-10 py-30'>
-      <div className='bg-black bg-opacity-50 p-10 rounded-2xl'>
+    <div className='relative flex h-[calc(100vh-theme(spacing.16))] items-center justify-center overflow-hidden px-10 py-32'>
+      <div className='rounded-2xl bg-black/50 p-10'>
       {currentQuestionIndex < quizData.length ? (
         <div className="px-3">
-          <p className="font-semibold mb-3 text-2xl">
+          <p className="mb-3 text-2xl font-semibold">
             {quizData[currentQuestionIndex].question}
           </p>
           {quizData[currentQuestionIndex].options.map((option, index) => (
@@ -86,7 +86,7 @@ export default function QuizPage() {
           <div className="mt-5">
             {!showNext && (
               <button
-                className="px-5 py-2 bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 rounded-xl font-semibold"
+                className="rounded-xl border border-gray-300 bg-white px-5 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 onClick={handleSubmit}
               >
                 Submit
@@ -94,7 +94,7 @@ export default function QuizPage() {
             )}
             {showNext && (
               <button
-                className="px-5 py-2 bg-white hover:bg-gray-100 border border-gray-300 text-gray-700 rounded-xl font-semibold"
+                className="rounded-xl border border-gray-300 bg-white px-5 py-2 font-semibold text-gray-700 hover:bg-gray-100"
                 onClick={handleNext}
               >
                 Next
@@ -102,21 +102,21 @@ export default function QuizPage() {
             )}
           </div>
           {success && (
-            <p className="text-green-500 mt-4 text-lg font-semibold">
+            <p className="mt-4 text-lg font-semibold text-green-500">
               {success}
             </p>
           )}
           {warning && (
-            <p className="text-red-500 mt-4 text-lg font-semibold">{warning}</p>
+            <p className="mt-4 text-lg font-semibold text-red-500">{warning}</p>
           )}
           {resources.length > 0 && (
             <div className="mt-2">
               <h3 className="text-xl font-semibold">Supplemental Resources:</h3>
-              <ul className="flex flex-col gap-3 mt-2">
+              <ul className="mt-2 flex flex-col gap-3">
                 {resources.map((resource, index) => (
                   <li key={index} className="overflow-hidden">
                     <a
-                      className="underline underline-offset-1 text-blue-400 break-words"
+                      className="break-words text-blue-400 underline underline-offset-1"
                       href={resource}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -130,7 +130,7 @@ export default function QuizPage() {
           )}
         </div>
       ) : (
-        <h3 className="text-blue-500 text-2xl font-semibold">You've completed the quiz!</h3>
+        <h3 className="text-2xl font-semibold text-blue-500">You&apos;ve completed the quiz!</h3>
       )}
       </div>
     </div>

@@ -25,12 +25,12 @@ export function ChatPrompt({ isLoading, onSubmit, handleQuiz }: { isLoading: boo
 
   return (
     <form ref={formRef} onSubmit={handleSubmit}>
-      <div className="flex flex-col max-h-60  border bg-black bg-opacity-50 rounded-2xl p-2 gap-1">
+      <div className="flex max-h-60 flex-col  gap-1 rounded-2xl border bg-black/50 p-2">
         <Textarea
             tabIndex={0}
             onKeyDown={onKeyDown}
             placeholder="Send a message."
-            className="bg-transparent min-h-[54px] w-full resize-none p-4 pr-[40px] focus-within:outline-none"
+            className="min-h-[54px] w-full resize-none bg-transparent p-4 pr-[40px] focus-within:outline-none"
             autoFocus
             spellCheck={false}
             autoComplete="off"
