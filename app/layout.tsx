@@ -1,23 +1,16 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import Link from 'next/link'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { IconGitHub, IconNextChat, IconSeparator } from '@/components/ui/icons'
 import { Toaster } from '@/components/ui/toaster'
 import { Providers } from '@/components/providers'
 import VrmViewer from "@/components/vrmViewer";
 
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
-
 export const metadata: Metadata = {
   title: {
-    default: 'OpenAI Assistant File Search',
-    template: `%s - OpenAI Assistant File Search`,
+    default: 'AI Avatar Interaction',
+    template: ``,
   },
-  description: 'An OpenAI Assistant File Search chatbot built with Next.js.',
+  description: 'AI Avatar ',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',

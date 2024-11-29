@@ -17,18 +17,9 @@ export class AutoBlink {
     this._isOpen = true;
   }
 
-  /**
-   * 自動瞬きをON/OFFする。
-   *
-   * 目を閉じている(blinkが1の)時に感情表現を入れてしまうと不自然になるので、
-   * 目が開くまでの秒を返し、その時間待ってから感情表現を適用する。
-   * @param isAuto
-   * @returns 目が開くまでの秒
-   */
   public setEnable(isAuto: boolean) {
     this._isAutoBlink = isAuto;
 
-    // 目が閉じている場合、目が開くまでの時間を返す
     if (!this._isOpen) {
       return this._remainingTime;
     }

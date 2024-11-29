@@ -59,7 +59,6 @@ export class Viewer {
       const vrma = await loadVRMAnimation(buildUrl("/idle_loop.vrma"));
       if (vrma) this.model.loadAnimation(vrma);
 
-      // HACK: アニメーションの原点がずれているので再生後にカメラ位置を調整する
       requestAnimationFrame(() => {
         this.resetCamera();
       });
