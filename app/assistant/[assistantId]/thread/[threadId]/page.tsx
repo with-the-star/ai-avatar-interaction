@@ -75,22 +75,22 @@ export default function Page({ params }: PageProps) {
 
   async function handleQuiz() {
     const quizRequestMessage: Message = {
-      content: "Please generate a quiz for me.",
+      content: "Please give me quizes based on the assistant file I provided, formatted as JSON. Response with only JSON. This is json type : '[question: string;options: string[];correctAnswer: string;]'",
       role: 'user',
     };
 
-    dispatch({ type: 'ADD_MESSAGE', message: quizRequestMessage });
+    // dispatch({ type: 'ADD_MESSAGE', message: quizRequestMessage });
     dispatch({ type: 'SET_LOADING', isLoading: true });
 
     await createMessage(params.threadId, quizRequestMessage);
     const stream = await runThread(params.threadId, params.assistantId);
 
-    dispatch({ type: 'ADD_MESSAGE', message: { role: 'assistant', content: '_Generating quiz..._' } });
+    dispatch({ type: 'ADD_MESSAGE', message: { role: 'assistant', content: '_Generating response..._' } });
     
     let quizData = null;
     for await (const v of readStreamableValue(stream)) {
       if (v && v.text !== '') {
-        dispatch({ type: 'UPDATE_LAST_MESSAGE', content: v.text });
+        // dispatch({ type: 'UPDATE_LAST_MESSAGE', content: v.text });
         quizData = v.text; // Assuming the API returns quiz data in this format
       }
     }
@@ -99,14 +99,15 @@ export default function Page({ params }: PageProps) {
 
     // Redirect to the quiz page with quiz data
     if (quizData) {
-      console.log(quizData)
-      localStorage.setItem('quizData', JSON.stringify(quizData));
+      const cleanedString = quizData
+        .replace(/```json/, '').replace(/```/, '');
+      localStorage.setItem('quizData', cleanedString);
        router.push('/quiz');
     }
   }
 
   return (
-    <div className="relative flex h-[calc(100vh-theme(spacing.16))] overflow-hidden bg-background dark:bg-transparent">
+    <div className="relative flex h-[calc(100vh-theme(spacing.16))] overflow-hidden">
       <Chat messages={state.messages} handleSubmit={handleSubmit} isLoading={state.isLoading} handleQuiz={handleQuiz} />
     </div>
   )
