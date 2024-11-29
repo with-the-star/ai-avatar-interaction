@@ -91,13 +91,11 @@ export default function Page({ params }: PageProps) {
     for await (const v of readStreamableValue(stream)) {
       if (v && v.text !== '') {
         // dispatch({ type: 'UPDATE_LAST_MESSAGE', content: v.text });
-        quizData = v.text; // Assuming the API returns quiz data in this format
+        quizData = v.text;
       }
     }
     
     dispatch({ type: 'SET_LOADING', isLoading: false });
-
-    // Redirect to the quiz page with quiz data
     if (quizData) {
       const cleanedString = quizData
         .replace(/```json/, '').replace(/```/, '');

@@ -12,7 +12,6 @@ export default function VrmViewer() {
         viewer.setup(canvas);
         viewer.loadVrm(buildUrl("/AvatarSample_B.vrm"));
 
-        // Drag and DropでVRMを差し替え
         canvas.addEventListener("dragover", function (event) {
           event.preventDefault();
         });
