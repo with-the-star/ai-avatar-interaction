@@ -85,3 +85,8 @@ export async function runThread(threadId: string, assistantId: string) {
 
   return stream.value
 }
+
+export async function removeThread(threadId: string) {
+  const thread = await openai.beta.threads.del(threadId)
+  return 'success';
+}

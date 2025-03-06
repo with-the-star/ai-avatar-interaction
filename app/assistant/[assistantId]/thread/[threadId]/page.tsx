@@ -8,7 +8,7 @@ import { Message } from '@/lib/types'
 import { Chat } from '@/components/chat'
 
 interface PageProps {
-  params: { assistantId: string; threadId: string }
+  params: Promise<{ assistantId: string; threadId: string }>;
 }
 
 type State = {
@@ -45,15 +45,19 @@ export default function Page({ params }: PageProps) {
   })
 
   const fetchMessages = useCallback(async () => {
-    const messages = await listMessages(params.threadId)
+    const { threadId } = await params;
+
+    const messages = await listMessages(threadId)
     messages.forEach(message => dispatch({ type: 'ADD_MESSAGE', message }))
-  }, [params.threadId])
+  }, [params])
 
   useEffect(() => {
     fetchMessages()
   }, [fetchMessages])
 
   async function handleSubmit(input: string) {
+    const { threadId, assistantId } = await params;
+
     const userMessage: Message = {
       content: input,
       role: 'user',
@@ -61,8 +65,8 @@ export default function Page({ params }: PageProps) {
     dispatch({ type: 'ADD_MESSAGE', message: userMessage })
     dispatch({ type: 'SET_LOADING', isLoading: true })
 
-    await createMessage(params.threadId, userMessage)
-    const stream = await runThread(params.threadId, params.assistantId)
+    await createMessage(threadId, userMessage)
+    const stream = await runThread(threadId, assistantId)
 
     dispatch({ type: 'ADD_MESSAGE', message: { role: 'assistant', content: '_Generating response..._' } })
     for await (const v of readStreamableValue(stream)) {
@@ -74,6 +78,7 @@ export default function Page({ params }: PageProps) {
   }
 
   async function handleQuiz() {
+    const { threadId, assistantId } = await params;
     const quizRequestMessage: Message = {
       content: "Please give me quizes based on the assistant file I provided, formatted as JSON. Response with only JSON. This is json type : '[question: string;options: string[];correctAnswer: string;]'",
       role: 'user',
@@ -82,8 +87,8 @@ export default function Page({ params }: PageProps) {
     // dispatch({ type: 'ADD_MESSAGE', message: quizRequestMessage });
     dispatch({ type: 'SET_LOADING', isLoading: true });
 
-    await createMessage(params.threadId, quizRequestMessage);
-    const stream = await runThread(params.threadId, params.assistantId);
+    await createMessage(threadId, quizRequestMessage);
+    const stream = await runThread(threadId, assistantId);
 
     dispatch({ type: 'ADD_MESSAGE', message: { role: 'assistant', content: '_Generating response..._' } });
     
@@ -101,7 +106,7 @@ export default function Page({ params }: PageProps) {
         .replace(/```json/, '').replace(/```/, '');
       localStorage.setItem('quizData', cleanedString);
        router.push('/quiz');
-    }
+    }    
   }
 
   return (
